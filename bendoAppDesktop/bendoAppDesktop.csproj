@@ -35,14 +35,46 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.2.0.325, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.10.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.9.10\Assemblies\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.10.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.9.10\Assemblies\v4.5\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -69,6 +101,60 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DbContextEntities\caja.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\categoria.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\cliente.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\DbContextEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbContextEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\DbContextEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\DbContextEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbContextEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\detalle_venta.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\estatus_venta.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\kits_paquetes.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\modulo.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\operacione.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\operaciones_modulos.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\producto.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\unidades_medida.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\usuario.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContextEntities\venta.cs">
+      <DependentUpon>DbContextEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -92,6 +178,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="DbContextEntities\DbContextEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbContextEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DbContextEntities\DbContextEntities.edmx.diagram">
+      <DependentUpon>DbContextEntities.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -106,6 +199,21 @@
     <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DbContextEntities\DbContextEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DbContextEntities.Context.cs</LastGenOutput>
+      <DependentUpon>DbContextEntities.edmx</DependentUpon>
+    </Content>
+    <Content Include="DbContextEntities\DbContextEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbContextEntities.edmx</DependentUpon>
+      <LastGenOutput>DbContextEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0d056aaaf2fb436ebcf7c6ceb40b825b" Name="Diagram1" ZoomLevel="29">
+        <EntityTypeShape EntityType="BendoDbContext.caja" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.categoria" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.cliente" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.detalle_venta" Width="1.5" PointX="10.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.estatus_venta" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.kits_paquetes" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.modulo" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.operacione" Width="1.5" PointX="5.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.operaciones_modulos" Width="1.5" PointX="8" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.producto" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.unidades_medida" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.usuario" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BendoDbContext.venta" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="BendoDbContext.ventas_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.categorias_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.categorias_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.productos_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.clientes_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.clientes_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.ventas_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.detalle_venta_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.detalle_venta_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.ventas_ibfk_4" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.kits_paquetes_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.operaciones_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.operaciones_modulos_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.operaciones_modulos_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.operaciones_modulos_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.productos_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="BendoDbContext.ventas_ibfk_2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

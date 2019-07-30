@@ -1,0 +1,1157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BendoDbContext.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cajas">
+          <Key>
+            <PropertyRef Name="id_caja" />
+          </Key>
+          <Property Name="id_caja" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categorias">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="bigint" Nullable="false" />
+          <Property Name="categoria" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuario_alta" Type="bigint" Nullable="false" />
+          <Property Name="fecha_alta" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="usuario_modificacion" Type="bigint" Nullable="false" />
+          <Property Name="fecha_modificacion" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_completo" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lim_credito" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="fecha_alta" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="usuario_alta" Type="bigint" Nullable="false" />
+          <Property Name="fecha_modificacion" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="usuario_modificacion" Type="bigint" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="detalle_venta">
+          <Key>
+            <PropertyRef Name="id_vta_detalle" />
+          </Key>
+          <Property Name="id_vta_detalle" Type="bigint" Nullable="false" />
+          <Property Name="id_venta" Type="bigint" Nullable="false" />
+          <Property Name="id_producto" Type="bigint" Nullable="false" />
+          <Property Name="precio" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="cantidad" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="importe" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="descuento" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="estatus_venta">
+          <Key>
+            <PropertyRef Name="id_estatus_venta" />
+          </Key>
+          <Property Name="id_estatus_venta" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="estatus" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kits_paquetes">
+          <Key>
+            <PropertyRef Name="id_kit" />
+          </Key>
+          <Property Name="id_kit" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_producto" Type="bigint" Nullable="false" />
+          <Property Name="cantidad" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="modulos">
+          <Key>
+            <PropertyRef Name="id_modulo" />
+          </Key>
+          <Property Name="id_modulo" Type="bigint" Nullable="false" />
+          <Property Name="modulo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="path" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="operaciones">
+          <Key>
+            <PropertyRef Name="id_operacion" />
+          </Key>
+          <Property Name="id_operacion" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_modulo" Type="bigint" Nullable="false" />
+          <Property Name="operacion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="operaciones_modulos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="bigint" Nullable="false" />
+          <Property Name="id_modulo" Type="bigint" Nullable="false" />
+          <Property Name="id_operacion" Type="bigint" Nullable="false" />
+          <Property Name="activo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="productos">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_barras" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="id_unidad" Type="bigint" Nullable="false" />
+          <Property Name="id_categoria" Type="bigint" Nullable="false" />
+          <Property Name="precio_costo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ganancia" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="precio_venta" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="precio_mayoreo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="utiliza_inventario" Type="int" Nullable="false" />
+          <Property Name="existencias" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="minimo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="maximo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unidades_medida">
+          <Key>
+            <PropertyRef Name="id_unidad" />
+          </Key>
+          <Property Name="id_unidad" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unidad_medida" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_completo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="is_administrador" Type="int" Nullable="false" />
+          <Property Name="usuario_alta" Type="bigint" Nullable="false" />
+          <Property Name="fecha_alta" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="usuario_modificacion" Type="bigint" Nullable="false" />
+          <Property Name="fecha_modificacion" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ventas">
+          <Key>
+            <PropertyRef Name="id_folio" />
+          </Key>
+          <Property Name="id_folio" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ticket" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_cliente" Type="bigint" Nullable="false" />
+          <Property Name="id_usuario" Type="bigint" Nullable="false" />
+          <Property Name="id_caja" Type="bigint" Nullable="false" />
+          <Property Name="fecha_venta" Type="date" Nullable="false" />
+          <Property Name="hora_venta" Type="time" Precision="0" Nullable="false" />
+          <Property Name="total_articulos" Type="int" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="pago" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="estatus_venta" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="categorias_ibfk_1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="categorias" Type="Self.categorias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="categorias">
+              <PropertyRef Name="usuario_alta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="categorias_ibfk_2">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="categorias" Type="Self.categorias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="categorias">
+              <PropertyRef Name="usuario_modificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientes_ibfk_1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clientes" Type="Self.clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="usuario_alta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientes_ibfk_2">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clientes" Type="Self.clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="usuario_modificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detalle_venta_ibfk_1">
+          <End Role="ventas" Type="Self.ventas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="detalle_venta" Type="Self.detalle_venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ventas">
+              <PropertyRef Name="id_folio" />
+            </Principal>
+            <Dependent Role="detalle_venta">
+              <PropertyRef Name="id_venta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detalle_venta_ibfk_2">
+          <End Role="productos" Type="Self.productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="detalle_venta" Type="Self.detalle_venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="detalle_venta">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kits_paquetes_ibfk_1">
+          <End Role="productos" Type="Self.productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="kits_paquetes" Type="Self.kits_paquetes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="kits_paquetes">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="operaciones_ibfk_1">
+          <End Role="modulos" Type="Self.modulos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulos">
+              <PropertyRef Name="id_modulo" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="id_modulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="operaciones_modulos_ibfk_1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="operaciones_modulos" Type="Self.operaciones_modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="operaciones_modulos">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="operaciones_modulos_ibfk_2">
+          <End Role="modulos" Type="Self.modulos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="operaciones_modulos" Type="Self.operaciones_modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulos">
+              <PropertyRef Name="id_modulo" />
+            </Principal>
+            <Dependent Role="operaciones_modulos">
+              <PropertyRef Name="id_modulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="operaciones_modulos_ibfk_3">
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="operaciones_modulos" Type="Self.operaciones_modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operaciones">
+              <PropertyRef Name="id_operacion" />
+            </Principal>
+            <Dependent Role="operaciones_modulos">
+              <PropertyRef Name="id_operacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_ibfk_1">
+          <End Role="categorias" Type="Self.categorias" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="productos" Type="Self.productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorias">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_ibfk_2">
+          <End Role="unidades_medida" Type="Self.unidades_medida" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="productos" Type="Self.productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unidades_medida">
+              <PropertyRef Name="id_unidad" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="id_unidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ventas_ibfk_1">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ventas_ibfk_2">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ventas_ibfk_3">
+          <End Role="cajas" Type="Self.cajas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cajas">
+              <PropertyRef Name="id_caja" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="id_caja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ventas_ibfk_4">
+          <End Role="estatus_venta" Type="Self.estatus_venta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ventas" Type="Self.ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estatus_venta">
+              <PropertyRef Name="id_estatus_venta" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="estatus_venta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BendoDbContextStoreContainer">
+          <EntitySet Name="cajas" EntityType="Self.cajas" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="categorias" EntityType="Self.categorias" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="clientes" EntityType="Self.clientes" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="detalle_venta" EntityType="Self.detalle_venta" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="estatus_venta" EntityType="Self.estatus_venta" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="kits_paquetes" EntityType="Self.kits_paquetes" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="modulos" EntityType="Self.modulos" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="operaciones" EntityType="Self.operaciones" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="operaciones_modulos" EntityType="Self.operaciones_modulos" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="productos" EntityType="Self.productos" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="unidades_medida" EntityType="Self.unidades_medida" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="bendo_puntoventa" store:Type="Tables" />
+          <EntitySet Name="ventas" EntityType="Self.ventas" Schema="bendo_puntoventa" store:Type="Tables" />
+          <AssociationSet Name="categorias_ibfk_1" Association="Self.categorias_ibfk_1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="categorias" EntitySet="categorias" />
+          </AssociationSet>
+          <AssociationSet Name="categorias_ibfk_2" Association="Self.categorias_ibfk_2">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="categorias" EntitySet="categorias" />
+          </AssociationSet>
+          <AssociationSet Name="clientes_ibfk_1" Association="Self.clientes_ibfk_1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="clientes_ibfk_2" Association="Self.clientes_ibfk_2">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="detalle_venta_ibfk_1" Association="Self.detalle_venta_ibfk_1">
+            <End Role="ventas" EntitySet="ventas" />
+            <End Role="detalle_venta" EntitySet="detalle_venta" />
+          </AssociationSet>
+          <AssociationSet Name="detalle_venta_ibfk_2" Association="Self.detalle_venta_ibfk_2">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="detalle_venta" EntitySet="detalle_venta" />
+          </AssociationSet>
+          <AssociationSet Name="kits_paquetes_ibfk_1" Association="Self.kits_paquetes_ibfk_1">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="kits_paquetes" EntitySet="kits_paquetes" />
+          </AssociationSet>
+          <AssociationSet Name="operaciones_ibfk_1" Association="Self.operaciones_ibfk_1">
+            <End Role="modulos" EntitySet="modulos" />
+            <End Role="operaciones" EntitySet="operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="operaciones_modulos_ibfk_1" Association="Self.operaciones_modulos_ibfk_1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="operaciones_modulos" EntitySet="operaciones_modulos" />
+          </AssociationSet>
+          <AssociationSet Name="operaciones_modulos_ibfk_2" Association="Self.operaciones_modulos_ibfk_2">
+            <End Role="modulos" EntitySet="modulos" />
+            <End Role="operaciones_modulos" EntitySet="operaciones_modulos" />
+          </AssociationSet>
+          <AssociationSet Name="operaciones_modulos_ibfk_3" Association="Self.operaciones_modulos_ibfk_3">
+            <End Role="operaciones" EntitySet="operaciones" />
+            <End Role="operaciones_modulos" EntitySet="operaciones_modulos" />
+          </AssociationSet>
+          <AssociationSet Name="productos_ibfk_1" Association="Self.productos_ibfk_1">
+            <End Role="categorias" EntitySet="categorias" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="productos_ibfk_2" Association="Self.productos_ibfk_2">
+            <End Role="unidades_medida" EntitySet="unidades_medida" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="ventas_ibfk_1" Association="Self.ventas_ibfk_1">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="ventas_ibfk_2" Association="Self.ventas_ibfk_2">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="ventas_ibfk_3" Association="Self.ventas_ibfk_3">
+            <End Role="cajas" EntitySet="cajas" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="ventas_ibfk_4" Association="Self.ventas_ibfk_4">
+            <End Role="estatus_venta" EntitySet="estatus_venta" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BendoDbContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="caja">
+          <Key>
+            <PropertyRef Name="id_caja" />
+          </Key>
+          <Property Name="id_caja" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ventas" Relationship="Self.ventas_ibfk_3" FromRole="cajas" ToRole="ventas" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="Int64" Nullable="false" />
+          <Property Name="categoria1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario_alta" Type="Int64" Nullable="false" />
+          <Property Name="fecha_alta" Type="DateTime" Nullable="false" />
+          <Property Name="usuario_modificacion" Type="Int64" Nullable="false" />
+          <Property Name="fecha_modificacion" Type="DateTime" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.categorias_ibfk_1" FromRole="categorias" ToRole="usuarios" />
+          <NavigationProperty Name="usuario1" Relationship="Self.categorias_ibfk_2" FromRole="categorias" ToRole="usuarios" />
+          <NavigationProperty Name="productos" Relationship="Self.productos_ibfk_1" FromRole="categorias" ToRole="productos" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_completo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lim_credito" Type="Decimal" Nullable="false" />
+          <Property Name="fecha_alta" Type="DateTime" Nullable="false" />
+          <Property Name="usuario_alta" Type="Int64" Nullable="false" />
+          <Property Name="fecha_modificacion" Type="DateTime" Nullable="false" />
+          <Property Name="usuario_modificacion" Type="Int64" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.clientes_ibfk_1" FromRole="clientes" ToRole="usuarios" />
+          <NavigationProperty Name="usuario1" Relationship="Self.clientes_ibfk_2" FromRole="clientes" ToRole="usuarios" />
+          <NavigationProperty Name="ventas" Relationship="Self.ventas_ibfk_1" FromRole="clientes" ToRole="ventas" />
+        </EntityType>
+        <EntityType Name="detalle_venta">
+          <Key>
+            <PropertyRef Name="id_vta_detalle" />
+          </Key>
+          <Property Name="id_vta_detalle" Type="Int64" Nullable="false" />
+          <Property Name="id_venta" Type="Int64" Nullable="false" />
+          <Property Name="id_producto" Type="Int64" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="importe" Type="Decimal" Nullable="false" />
+          <Property Name="descuento" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="venta" Relationship="Self.detalle_venta_ibfk_1" FromRole="detalle_venta" ToRole="ventas" />
+          <NavigationProperty Name="producto" Relationship="Self.detalle_venta_ibfk_2" FromRole="detalle_venta" ToRole="productos" />
+        </EntityType>
+        <EntityType Name="estatus_venta">
+          <Key>
+            <PropertyRef Name="id_estatus_venta" />
+          </Key>
+          <Property Name="id_estatus_venta" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ventas" Relationship="Self.ventas_ibfk_4" FromRole="estatus_venta" ToRole="ventas" />
+        </EntityType>
+        <EntityType Name="kits_paquetes">
+          <Key>
+            <PropertyRef Name="id_kit" />
+          </Key>
+          <Property Name="id_kit" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_producto" Type="Int64" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="producto" Relationship="Self.kits_paquetes_ibfk_1" FromRole="kits_paquetes" ToRole="productos" />
+        </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="id_modulo" />
+          </Key>
+          <Property Name="id_modulo" Type="Int64" Nullable="false" />
+          <Property Name="modulo1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="operaciones" Relationship="Self.operaciones_ibfk_1" FromRole="modulos" ToRole="operaciones" />
+          <NavigationProperty Name="operaciones_modulos" Relationship="Self.operaciones_modulos_ibfk_2" FromRole="modulos" ToRole="operaciones_modulos" />
+        </EntityType>
+        <EntityType Name="operacione">
+          <Key>
+            <PropertyRef Name="id_operacion" />
+          </Key>
+          <Property Name="id_operacion" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_modulo" Type="Int64" Nullable="false" />
+          <Property Name="operacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="modulo" Relationship="Self.operaciones_ibfk_1" FromRole="operaciones" ToRole="modulos" />
+          <NavigationProperty Name="operaciones_modulos" Relationship="Self.operaciones_modulos_ibfk_3" FromRole="operaciones" ToRole="operaciones_modulos" />
+        </EntityType>
+        <EntityType Name="operaciones_modulos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int64" Nullable="false" />
+          <Property Name="id_modulo" Type="Int64" Nullable="false" />
+          <Property Name="id_operacion" Type="Int64" Nullable="false" />
+          <Property Name="activo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="modulo" Relationship="Self.operaciones_modulos_ibfk_2" FromRole="operaciones_modulos" ToRole="modulos" />
+          <NavigationProperty Name="operacione" Relationship="Self.operaciones_modulos_ibfk_3" FromRole="operaciones_modulos" ToRole="operaciones" />
+          <NavigationProperty Name="usuario" Relationship="Self.operaciones_modulos_ibfk_1" FromRole="operaciones_modulos" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_barras" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_unidad" Type="Int64" Nullable="false" />
+          <Property Name="id_categoria" Type="Int64" Nullable="false" />
+          <Property Name="precio_costo" Type="Decimal" Nullable="false" />
+          <Property Name="ganancia" Type="Decimal" Nullable="false" />
+          <Property Name="precio_venta" Type="Decimal" Nullable="false" />
+          <Property Name="precio_mayoreo" Type="Decimal" Nullable="false" />
+          <Property Name="utiliza_inventario" Type="Int32" Nullable="false" />
+          <Property Name="existencias" Type="Decimal" Nullable="false" />
+          <Property Name="minimo" Type="Decimal" Nullable="false" />
+          <Property Name="maximo" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="categoria" Relationship="Self.productos_ibfk_1" FromRole="productos" ToRole="categorias" />
+          <NavigationProperty Name="detalle_venta" Relationship="Self.detalle_venta_ibfk_2" FromRole="productos" ToRole="detalle_venta" />
+          <NavigationProperty Name="kits_paquetes" Relationship="Self.kits_paquetes_ibfk_1" FromRole="productos" ToRole="kits_paquetes" />
+          <NavigationProperty Name="unidades_medida" Relationship="Self.productos_ibfk_2" FromRole="productos" ToRole="unidades_medida" />
+        </EntityType>
+        <EntityType Name="unidades_medida">
+          <Key>
+            <PropertyRef Name="id_unidad" />
+          </Key>
+          <Property Name="id_unidad" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unidad_medida" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="productos" Relationship="Self.productos_ibfk_2" FromRole="unidades_medida" ToRole="productos" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_completo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="is_administrador" Type="Int32" Nullable="false" />
+          <Property Name="usuario_alta" Type="Int64" Nullable="false" />
+          <Property Name="fecha_alta" Type="DateTime" Nullable="false" />
+          <Property Name="usuario_modificacion" Type="Int64" Nullable="false" />
+          <Property Name="fecha_modificacion" Type="DateTime" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="categorias" Relationship="Self.categorias_ibfk_1" FromRole="usuarios" ToRole="categorias" />
+          <NavigationProperty Name="categorias1" Relationship="Self.categorias_ibfk_2" FromRole="usuarios" ToRole="categorias" />
+          <NavigationProperty Name="clientes" Relationship="Self.clientes_ibfk_1" FromRole="usuarios" ToRole="clientes" />
+          <NavigationProperty Name="clientes1" Relationship="Self.clientes_ibfk_2" FromRole="usuarios" ToRole="clientes" />
+          <NavigationProperty Name="operaciones_modulos" Relationship="Self.operaciones_modulos_ibfk_1" FromRole="usuarios" ToRole="operaciones_modulos" />
+          <NavigationProperty Name="ventas" Relationship="Self.ventas_ibfk_2" FromRole="usuarios" ToRole="ventas" />
+        </EntityType>
+        <EntityType Name="venta">
+          <Key>
+            <PropertyRef Name="id_folio" />
+          </Key>
+          <Property Name="id_folio" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ticket" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_cliente" Type="Int64" Nullable="false" />
+          <Property Name="id_usuario" Type="Int64" Nullable="false" />
+          <Property Name="id_caja" Type="Int64" Nullable="false" />
+          <Property Name="fecha_venta" Type="DateTime" Nullable="false" />
+          <Property Name="hora_venta" Type="Time" Nullable="false" />
+          <Property Name="total_articulos" Type="Int32" Nullable="false" />
+          <Property Name="total" Type="Decimal" Nullable="false" />
+          <Property Name="pago" Type="Decimal" Nullable="false" />
+          <Property Name="estatus_venta" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="caja" Relationship="Self.ventas_ibfk_3" FromRole="ventas" ToRole="cajas" />
+          <NavigationProperty Name="cliente" Relationship="Self.ventas_ibfk_1" FromRole="ventas" ToRole="clientes" />
+          <NavigationProperty Name="detalle_venta" Relationship="Self.detalle_venta_ibfk_1" FromRole="ventas" ToRole="detalle_venta" />
+          <NavigationProperty Name="estatus_venta1" Relationship="Self.ventas_ibfk_4" FromRole="ventas" ToRole="estatus_venta" />
+          <NavigationProperty Name="usuario" Relationship="Self.ventas_ibfk_2" FromRole="ventas" ToRole="usuarios" />
+        </EntityType>
+        <Association Name="ventas_ibfk_3">
+          <End Role="cajas" Type="Self.caja" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ventas" Type="Self.venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cajas">
+              <PropertyRef Name="id_caja" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="id_caja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="categorias_ibfk_1">
+          <End Role="usuarios" Type="Self.usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="categorias" Type="Self.categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="categorias">
+              <PropertyRef Name="usuario_alta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="categorias_ibfk_2">
+          <End Role="usuarios" Type="Self.usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="categorias" Type="Self.categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="categorias">
+              <PropertyRef Name="usuario_modificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_ibfk_1">
+          <End Role="categorias" Type="Self.categoria" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="productos" Type="Self.producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorias">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientes_ibfk_1">
+          <End Role="usuarios" Type="Self.usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clientes" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="usuario_alta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientes_ibfk_2">
+          <End Role="usuarios" Type="Self.usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="clientes" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="usuario_modificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ventas_ibfk_1">
+          <End Role="clientes" Type="Self.cliente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ventas" Type="Self.venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detalle_venta_ibfk_1">
+          <End Role="ventas" Type="Self.venta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="detalle_venta" Type="Self.detalle_venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ventas">
+              <PropertyRef Name="id_folio" />
+            </Principal>
+            <Dependent Role="detalle_venta">
+              <PropertyRef Name="id_venta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="detalle_venta_ibfk_2">
+          <End Role="productos" Type="Self.producto" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="detalle_venta" Type="Self.detalle_venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="detalle_venta">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ventas_ibfk_4">
+          <End Role="estatus_venta" Type="Self.estatus_venta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ventas" Type="Self.venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estatus_venta">
+              <PropertyRef Name="id_estatus_venta" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="estatus_venta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kits_paquetes_ibfk_1">
+          <End Role="productos" Type="Self.producto" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="kits_paquetes" Type="Self.kits_paquetes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="kits_paquetes">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="operaciones_ibfk_1">
+          <End Role="modulos" Type="Self.modulo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="operaciones" Type="Self.operacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulos">
+              <PropertyRef Name="id_modulo" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="id_modulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="operaciones_modulos_ibfk_2">
+          <End Role="modulos" Type="Self.modulo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="operaciones_modulos" Type="Self.operaciones_modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulos">
+              <PropertyRef Name="id_modulo" />
+            </Principal>
+            <Dependent Role="operaciones_modulos">
+              <PropertyRef Name="id_modulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="operaciones_modulos_ibfk_3">
+          <End Role="operaciones" Type="Self.operacione" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="operaciones_modulos" Type="Self.operaciones_modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operaciones">
+              <PropertyRef Name="id_operacion" />
+            </Principal>
+            <Dependent Role="operaciones_modulos">
+              <PropertyRef Name="id_operacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="operaciones_modulos_ibfk_1">
+          <End Role="usuarios" Type="Self.usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="operaciones_modulos" Type="Self.operaciones_modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="operaciones_modulos">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_ibfk_2">
+          <End Role="unidades_medida" Type="Self.unidades_medida" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="productos" Type="Self.producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unidades_medida">
+              <PropertyRef Name="id_unidad" />
+            </Principal>
+            <Dependent Role="productos">
+              <PropertyRef Name="id_unidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ventas_ibfk_2">
+          <End Role="usuarios" Type="Self.usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ventas" Type="Self.venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="ventas">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bendo_puntoventaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cajas" EntityType="Self.caja" />
+          <EntitySet Name="categorias" EntityType="Self.categoria" />
+          <EntitySet Name="clientes" EntityType="Self.cliente" />
+          <EntitySet Name="detalle_venta" EntityType="Self.detalle_venta" />
+          <EntitySet Name="estatus_venta" EntityType="Self.estatus_venta" />
+          <EntitySet Name="kits_paquetes" EntityType="Self.kits_paquetes" />
+          <EntitySet Name="modulos" EntityType="Self.modulo" />
+          <EntitySet Name="operaciones" EntityType="Self.operacione" />
+          <EntitySet Name="operaciones_modulos" EntityType="Self.operaciones_modulos" />
+          <EntitySet Name="productos" EntityType="Self.producto" />
+          <EntitySet Name="unidades_medida" EntityType="Self.unidades_medida" />
+          <EntitySet Name="usuarios" EntityType="Self.usuario" />
+          <EntitySet Name="ventas" EntityType="Self.venta" />
+          <AssociationSet Name="ventas_ibfk_3" Association="Self.ventas_ibfk_3">
+            <End Role="cajas" EntitySet="cajas" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="categorias_ibfk_1" Association="Self.categorias_ibfk_1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="categorias" EntitySet="categorias" />
+          </AssociationSet>
+          <AssociationSet Name="categorias_ibfk_2" Association="Self.categorias_ibfk_2">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="categorias" EntitySet="categorias" />
+          </AssociationSet>
+          <AssociationSet Name="productos_ibfk_1" Association="Self.productos_ibfk_1">
+            <End Role="categorias" EntitySet="categorias" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="clientes_ibfk_1" Association="Self.clientes_ibfk_1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="clientes_ibfk_2" Association="Self.clientes_ibfk_2">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="ventas_ibfk_1" Association="Self.ventas_ibfk_1">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="detalle_venta_ibfk_1" Association="Self.detalle_venta_ibfk_1">
+            <End Role="ventas" EntitySet="ventas" />
+            <End Role="detalle_venta" EntitySet="detalle_venta" />
+          </AssociationSet>
+          <AssociationSet Name="detalle_venta_ibfk_2" Association="Self.detalle_venta_ibfk_2">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="detalle_venta" EntitySet="detalle_venta" />
+          </AssociationSet>
+          <AssociationSet Name="ventas_ibfk_4" Association="Self.ventas_ibfk_4">
+            <End Role="estatus_venta" EntitySet="estatus_venta" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+          <AssociationSet Name="kits_paquetes_ibfk_1" Association="Self.kits_paquetes_ibfk_1">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="kits_paquetes" EntitySet="kits_paquetes" />
+          </AssociationSet>
+          <AssociationSet Name="operaciones_ibfk_1" Association="Self.operaciones_ibfk_1">
+            <End Role="modulos" EntitySet="modulos" />
+            <End Role="operaciones" EntitySet="operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="operaciones_modulos_ibfk_2" Association="Self.operaciones_modulos_ibfk_2">
+            <End Role="modulos" EntitySet="modulos" />
+            <End Role="operaciones_modulos" EntitySet="operaciones_modulos" />
+          </AssociationSet>
+          <AssociationSet Name="operaciones_modulos_ibfk_3" Association="Self.operaciones_modulos_ibfk_3">
+            <End Role="operaciones" EntitySet="operaciones" />
+            <End Role="operaciones_modulos" EntitySet="operaciones_modulos" />
+          </AssociationSet>
+          <AssociationSet Name="operaciones_modulos_ibfk_1" Association="Self.operaciones_modulos_ibfk_1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="operaciones_modulos" EntitySet="operaciones_modulos" />
+          </AssociationSet>
+          <AssociationSet Name="productos_ibfk_2" Association="Self.productos_ibfk_2">
+            <End Role="unidades_medida" EntitySet="unidades_medida" />
+            <End Role="productos" EntitySet="productos" />
+          </AssociationSet>
+          <AssociationSet Name="ventas_ibfk_2" Association="Self.ventas_ibfk_2">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="ventas" EntitySet="ventas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BendoDbContextStoreContainer" CdmEntityContainer="bendo_puntoventaEntities">
+          <EntitySetMapping Name="cajas">
+            <EntityTypeMapping TypeName="BendoDbContext.caja">
+              <MappingFragment StoreEntitySet="cajas">
+                <ScalarProperty Name="id_caja" ColumnName="id_caja" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categorias">
+            <EntityTypeMapping TypeName="BendoDbContext.categoria">
+              <MappingFragment StoreEntitySet="categorias">
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="categoria1" ColumnName="categoria" />
+                <ScalarProperty Name="usuario_alta" ColumnName="usuario_alta" />
+                <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_modificacion" ColumnName="fecha_modificacion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="BendoDbContext.cliente">
+              <MappingFragment StoreEntitySet="clientes">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="lim_credito" ColumnName="lim_credito" />
+                <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
+                <ScalarProperty Name="usuario_alta" ColumnName="usuario_alta" />
+                <ScalarProperty Name="fecha_modificacion" ColumnName="fecha_modificacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detalle_venta">
+            <EntityTypeMapping TypeName="BendoDbContext.detalle_venta">
+              <MappingFragment StoreEntitySet="detalle_venta">
+                <ScalarProperty Name="id_vta_detalle" ColumnName="id_vta_detalle" />
+                <ScalarProperty Name="id_venta" ColumnName="id_venta" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="importe" ColumnName="importe" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estatus_venta">
+            <EntityTypeMapping TypeName="BendoDbContext.estatus_venta">
+              <MappingFragment StoreEntitySet="estatus_venta">
+                <ScalarProperty Name="id_estatus_venta" ColumnName="id_estatus_venta" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kits_paquetes">
+            <EntityTypeMapping TypeName="BendoDbContext.kits_paquetes">
+              <MappingFragment StoreEntitySet="kits_paquetes">
+                <ScalarProperty Name="id_kit" ColumnName="id_kit" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modulos">
+            <EntityTypeMapping TypeName="BendoDbContext.modulo">
+              <MappingFragment StoreEntitySet="modulos">
+                <ScalarProperty Name="id_modulo" ColumnName="id_modulo" />
+                <ScalarProperty Name="modulo1" ColumnName="modulo" />
+                <ScalarProperty Name="path" ColumnName="path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="operaciones">
+            <EntityTypeMapping TypeName="BendoDbContext.operacione">
+              <MappingFragment StoreEntitySet="operaciones">
+                <ScalarProperty Name="id_operacion" ColumnName="id_operacion" />
+                <ScalarProperty Name="id_modulo" ColumnName="id_modulo" />
+                <ScalarProperty Name="operacion" ColumnName="operacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="operaciones_modulos">
+            <EntityTypeMapping TypeName="BendoDbContext.operaciones_modulos">
+              <MappingFragment StoreEntitySet="operaciones_modulos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_modulo" ColumnName="id_modulo" />
+                <ScalarProperty Name="id_operacion" ColumnName="id_operacion" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productos">
+            <EntityTypeMapping TypeName="BendoDbContext.producto">
+              <MappingFragment StoreEntitySet="productos">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="codigo_barras" ColumnName="codigo_barras" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_unidad" ColumnName="id_unidad" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="precio_costo" ColumnName="precio_costo" />
+                <ScalarProperty Name="ganancia" ColumnName="ganancia" />
+                <ScalarProperty Name="precio_venta" ColumnName="precio_venta" />
+                <ScalarProperty Name="precio_mayoreo" ColumnName="precio_mayoreo" />
+                <ScalarProperty Name="utiliza_inventario" ColumnName="utiliza_inventario" />
+                <ScalarProperty Name="existencias" ColumnName="existencias" />
+                <ScalarProperty Name="minimo" ColumnName="minimo" />
+                <ScalarProperty Name="maximo" ColumnName="maximo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unidades_medida">
+            <EntityTypeMapping TypeName="BendoDbContext.unidades_medida">
+              <MappingFragment StoreEntitySet="unidades_medida">
+                <ScalarProperty Name="id_unidad" ColumnName="id_unidad" />
+                <ScalarProperty Name="unidad_medida" ColumnName="unidad_medida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="BendoDbContext.usuario">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="is_administrador" ColumnName="is_administrador" />
+                <ScalarProperty Name="usuario_alta" ColumnName="usuario_alta" />
+                <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_modificacion" ColumnName="fecha_modificacion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ventas">
+            <EntityTypeMapping TypeName="BendoDbContext.venta">
+              <MappingFragment StoreEntitySet="ventas">
+                <ScalarProperty Name="id_folio" ColumnName="id_folio" />
+                <ScalarProperty Name="ticket" ColumnName="ticket" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_caja" ColumnName="id_caja" />
+                <ScalarProperty Name="fecha_venta" ColumnName="fecha_venta" />
+                <ScalarProperty Name="hora_venta" ColumnName="hora_venta" />
+                <ScalarProperty Name="total_articulos" ColumnName="total_articulos" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="pago" ColumnName="pago" />
+                <ScalarProperty Name="estatus_venta" ColumnName="estatus_venta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
